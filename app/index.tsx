@@ -1,15 +1,16 @@
 
+import DefaultHeader from '@/components/header/deafultHeader'
 import { useRouter } from 'expo-router'
 import * as WebBrowser from 'expo-web-browser'
 import { useEffect, useMemo, useState } from 'react'
 import {
-    Image,
-    SafeAreaView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    useColorScheme,
-    View
+	Image,
+	SafeAreaView,
+	StyleSheet,
+	Text,
+	TouchableOpacity,
+	useColorScheme,
+	View
 } from 'react-native'
 import { supabase } from '../config/supabaseClient'
 
@@ -53,17 +54,11 @@ export default function Index() {
 			? require('../assets/icons/white-google-brands.png')
 			: require('../assets/icons/dark-google-brands.png')
 
-	// if (isLoading) {
-	// 	// Show a loading spinner while checking the session
-	// 	return (
-	// 		<View style={styles.loadingContainer}>
-	// 			<ActivityIndicator size="large" color="#3b82f6" />
-	// 		</View>
-	// 	)
-	// }
+
 
 	return (
 		<SafeAreaView style={{flex: 1}}>
+			<DefaultHeader/>
 			<View style={theme.container}>
 				<View style={theme.textContainer}>
 					<Text style={theme.header}>It's time to learn new things!</Text>

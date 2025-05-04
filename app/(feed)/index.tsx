@@ -1,17 +1,17 @@
-import PostElement from '@/components/ui/postElement'
+   import PostElement from '@/components/ui/postElement'
 import ProfileCardsElement from '@/components/ui/profileCardsElement'
 import { FeedType, fetchNotes, Note } from '@/config/notesService'
 import { supabase } from '@/config/supabaseClient'
 import { Link, useRouter } from 'expo-router'
 import React, { useEffect, useState } from 'react'
 import {
-	ActivityIndicator,
-	FlatList,
-	Image,
-	StyleSheet,
-	Text,
-	TouchableOpacity,
-	View
+  ActivityIndicator,
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
 } from 'react-native'
 
 export default function Feed() {
@@ -23,6 +23,7 @@ export default function Feed() {
   const [profileImg, setProfileImage] = useState('')
   const [initials, setInitials] = useState('')
   const [notes, setNotes] = useState<Note[]>([]) // State to store notes
+
 
   interface Profile {
     id: string
@@ -110,7 +111,9 @@ export default function Feed() {
     try {
       const notes = await fetchNotes({
         feedType: FeedType.MAIN,
-        limit: 20
+        limit: 20,
+        userId: userId,
+        offset: 0
       })
       setNotes(notes)
     } catch (err) {
@@ -207,11 +210,12 @@ export default function Feed() {
             contentContainerStyle={styles.authorContainer}
             showsHorizontalScrollIndicator={false}
             horizontal={true}
+            ListEmptyComponent={<ProfileCardsElement/>}
           />
         </>
       }
       data={notes}
-      renderItem={({ item }) => <PostElement note={item} />}
+      renderItem={({ item }) => <PostElement note={item} currentUserId={userId}/>}
       keyExtractor={(item) => item.id}
       contentContainerStyle={styles.container}
       showsVerticalScrollIndicator={true}

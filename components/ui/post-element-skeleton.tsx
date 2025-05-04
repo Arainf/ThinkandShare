@@ -10,20 +10,20 @@ import MaskedView from "@react-native-masked-view/masked-view"
 import { useRouter } from "expo-router"
 import { useEffect, useRef, useState } from "react"
 import {
-  ActivityIndicator,
-  Alert,
-  Animated,
-  FlatList,
-  Image,
-  KeyboardAvoidingView,
-  Modal,
-  Platform,
-  Share,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
+   ActivityIndicator,
+   Alert,
+   Animated,
+   FlatList,
+   Image,
+   KeyboardAvoidingView,
+   Modal,
+   Platform,
+   Share,
+   StyleSheet,
+   Text,
+   TextInput,
+   TouchableOpacity,
+   View,
 } from "react-native"
 import Svg, { Path } from "react-native-svg"
 
@@ -60,7 +60,7 @@ interface Profile {
   portrait_banner?: string
   profile_image?: string
 }
-export default function PostElement({ note, currentUserId }: { note: Note; currentUserId?: string }) {
+export default function PostElementSkeleton({ note, currentUserId }: { note: Note; currentUserId?: string }) {
   const [isLoading, setIsLoading] = useState(false)
   const [liked, setLiked] = useState(false)
   const [isFollowing, setIsFollowing] = useState(false)

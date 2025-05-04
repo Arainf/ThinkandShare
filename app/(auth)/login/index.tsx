@@ -1,17 +1,17 @@
 import { useRouter } from 'expo-router'
 import { useMemo, useState } from 'react'
 import {
-   ActivityIndicator,
-   Alert,
-   KeyboardAvoidingView,
-   Platform,
-   ScrollView,
-   StyleSheet,
-   Text,
-   TextInput,
-   TouchableOpacity,
-   useColorScheme,
-   View
+	ActivityIndicator,
+	Alert,
+	KeyboardAvoidingView,
+	Platform,
+	ScrollView,
+	StyleSheet,
+	Text,
+	TextInput,
+	TouchableOpacity,
+	useColorScheme,
+	View
 } from 'react-native'
 import { supabase } from '../../../config/supabaseClient'
 
@@ -32,6 +32,7 @@ export default function Login() {
 
 		if (error) {
 			Alert.alert('Login Failed', error.message)
+			setIsLoading(false)
 		} else {
 			const user = data.user // Get the logged-in user's details
 
@@ -49,7 +50,7 @@ export default function Login() {
 				if (profile.is_first_login) {
 					setIsLoading(false)
 					// Redirect to the profile-card route if it's the user's first login
-					router.push('/profile-card')
+					router.push('/(feed)/profile')
 				} else {
 					// Redirect to the feed route otherwise
 					router.replace('/(feed)')
